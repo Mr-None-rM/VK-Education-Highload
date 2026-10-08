@@ -1,0 +1,365 @@
+\documentclass[a4paper, 14pt]{extarticle}
+
+% Поля
+%--------------------------------------
+\usepackage{geometry}
+\geometry{a4paper,tmargin=2cm,bmargin=2cm,lmargin=3cm,rmargin=1cm}
+%--------------------------------------
+
+
+%Russian-specific packages
+%--------------------------------------
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc} 
+\usepackage[english, main=russian]{babel}
+%--------------------------------------
+
+\usepackage{textcomp}
+
+% Красная строка
+%--------------------------------------
+\usepackage{indentfirst}               
+%--------------------------------------             
+
+
+%Graphics
+%--------------------------------------
+\usepackage{graphicx}
+\graphicspath{ {./images/} }
+\usepackage{wrapfig}
+\usepackage{listings}
+%--------------------------------------
+
+% Полуторный интервал
+%--------------------------------------
+\linespread{1.3}                    
+%--------------------------------------
+
+%Выравнивание и переносы
+%--------------------------------------
+% Избавляемся от переполнений
+\sloppy
+% Запрещаем разрыв страницы после первой строки абзаца
+\clubpenalty=10000
+% Запрещаем разрыв страницы после последней строки абзаца
+\widowpenalty=10000
+%--------------------------------------
+
+%Списки
+\usepackage{enumitem}
+
+%Подписи
+\usepackage{caption} 
+
+%Гиперссылки
+\usepackage{hyperref}
+
+\usepackage{minted}
+
+\hypersetup {
+	unicode=true
+}
+
+%Рисунки
+%--------------------------------------
+\DeclareCaptionLabelSeparator*{emdash}{~--- }
+\captionsetup[figure]{labelsep=emdash,font=onehalfspacing,position=bottom}
+%--------------------------------------
+
+\usepackage{tempora}
+\usepackage{amsmath}
+\usepackage{color}
+\usepackage{listings}
+\lstset{
+  belowcaptionskip=1\baselineskip,
+  breaklines=true,
+  frame=L,
+  xleftmargin=\parindent,
+  language=Python,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{blue},
+  commentstyle=\itshape\color{purple},
+  identifierstyle=\color{black},
+  stringstyle=\color{red},
+  literate={а}{{\selectfont\char224}}1
+         {б}{{\selectfont\char225}}1
+         {в}{{\selectfont\char226}}1
+         {г}{{\selectfont\char227}}1
+         {д}{{\selectfont\char228}}1
+         {е}{{\selectfont\char229}}1
+         {ё}{{\"e}}1
+         {ж}{{\selectfont\char230}}1
+         {з}{{\selectfont\char231}}1
+         {и}{{\selectfont\char232}}1
+         {й}{{\selectfont\char233}}1
+         {к}{{\selectfont\char234}}1
+         {л}{{\selectfont\char235}}1
+         {м}{{\selectfont\char236}}1
+         {н}{{\selectfont\char237}}1
+         {о}{{\selectfont\char238}}1
+         {п}{{\selectfont\char239}}1
+         {р}{{\selectfont\char240}}1
+         {с}{{\selectfont\char241}}1
+         {т}{{\selectfont\char242}}1
+         {у}{{\selectfont\char243}}1
+         {ф}{{\selectfont\char244}}1
+         {х}{{\selectfont\char245}}1
+         {ц}{{\selectfont\char246}}1
+         {ч}{{\selectfont\char247}}1
+         {ш}{{\selectfont\char248}}1
+         {щ}{{\selectfont\char249}}1
+         {ъ}{{\selectfont\char250}}1
+         {ы}{{\selectfont\char251}}1
+         {ь}{{\selectfont\char252}}1
+         {э}{{\selectfont\char253}}1
+         {ю}{{\selectfont\char254}}1
+         {я}{{\selectfont\char255}}1
+         {А}{{\selectfont\char192}}1
+         {Б}{{\selectfont\char193}}1
+         {В}{{\selectfont\char194}}1
+         {Г}{{\selectfont\char195}}1
+         {Д}{{\selectfont\char196}}1
+         {Е}{{\selectfont\char197}}1
+         {Ё}{{\"E}}1
+         {Ж}{{\selectfont\char198}}1
+         {З}{{\selectfont\char199}}1
+         {И}{{\selectfont\char200}}1
+         {Й}{{\selectfont\char201}}1
+         {К}{{\selectfont\char202}}1
+         {Л}{{\selectfont\char203}}1
+         {М}{{\selectfont\char204}}1
+         {Н}{{\selectfont\char205}}1
+         {О}{{\selectfont\char206}}1
+         {П}{{\selectfont\char207}}1
+         {Р}{{\selectfont\char208}}1
+         {С}{{\selectfont\char209}}1
+         {Т}{{\selectfont\char210}}1
+         {У}{{\selectfont\char211}}1
+         {Ф}{{\selectfont\char212}}1
+         {Х}{{\selectfont\char213}}1
+         {Ц}{{\selectfont\char214}}1
+         {Ч}{{\selectfont\char215}}1
+         {Ш}{{\selectfont\char216}}1
+         {Щ}{{\selectfont\char217}}1
+         {Ъ}{{\selectfont\char218}}1
+         {Ы}{{\selectfont\char219}}1
+         {Ь}{{\selectfont\char220}}1
+         {Э}{{\selectfont\char221}}1
+         {Ю}{{\selectfont\char222}}1
+         {Я}{{\selectfont\char223}}1
+}
+
+%--------------------------------------
+%			НАЧАЛО ДОКУМЕНТА
+%--------------------------------------
+
+\begin{document}
+
+%--------------------------------------
+%			ТИТУЛЬНЫЙ ЛИСТ
+%--------------------------------------
+\begin{titlepage}
+\thispagestyle{empty}
+\newpage
+
+
+%Шапка титульного листа
+%--------------------------------------
+\vspace*{-60pt}
+\hspace{-65pt}
+\begin{minipage}{0.3\textwidth}
+\hspace*{-20pt}\centering
+\includegraphics[width=\textwidth]{emblem}
+\end{minipage}
+\begin{minipage}{0.67\textwidth}\small \textbf{
+\vspace*{-0.7ex}
+\hspace*{-6pt}\centerline{Министерство науки и высшего образования Российской Федерации}
+\vspace*{-0.7ex}
+\centerline{Федеральное государственное бюджетное образовательное учреждение }
+\vspace*{-0.7ex}
+\centerline{высшего образования}
+\vspace*{-0.7ex}
+\centerline{<<Московский государственный технический университет}
+\vspace*{-0.7ex}
+\centerline{имени Н.Э. Баумана}
+\vspace*{-0.7ex}
+\centerline{(национальный исследовательский университет)>>}
+\vspace*{-0.7ex}
+\centerline{(МГТУ им. Н.Э. Баумана)}}
+\end{minipage}
+%--------------------------------------
+
+%Полосы
+%--------------------------------------
+\vspace{-25pt}
+\hspace{-35pt}\rule{\textwidth}{2.3pt}
+
+\vspace*{-20.3pt}
+\hspace{-35pt}\rule{\textwidth}{0.4pt}
+%--------------------------------------
+
+\vspace{1.5ex}
+\hspace{-35pt} \noindent \small ФАКУЛЬТЕТ\hspace{80pt} <<Информатика и системы управления>>
+
+\vspace*{-16pt}
+\hspace{47pt}\rule{0.83\textwidth}{0.4pt}
+
+\vspace{0.5ex}
+\hspace{-35pt} \noindent \small КАФЕДРА\hspace{50pt} <<Теоретическая информатика и компьютерные технологии>>
+
+\vspace*{-16pt}
+\hspace{30pt}\rule{0.866\textwidth}{0.4pt}
+  
+\vspace{11em}
+
+\begin{center}
+\Large {\bf Лабораторная работа №1} \\ 
+\large {\bf по курсу <<Базы данных>>} \\ 
+\large <<Моделирование данных с использованием модели сущность-связь>>
+\end{center}\normalsize
+
+\vspace{8em}
+
+
+\begin{flushright}
+  {Студент группы ИУ9-41Б Росоха М. С.\hspace*{15pt} \\
+  \vspace{2ex}
+  Преподаватель Вишняков И. Э.\hspace*{15pt}}
+\end{flushright}
+
+\bigskip
+
+\vfill
+ 
+
+\begin{center}
+\textsl{Москва 2026}
+\end{center}
+\end{titlepage}
+%--------------------------------------
+%		КОНЕЦ ТИТУЛЬНОГО ЛИСТА
+%--------------------------------------
+
+\renewcommand{\ttdefault}{pcr}
+
+\setlength{\tabcolsep}{3pt}
+\newpage
+\setcounter{page}{2}
+\section{Задачи}\label{Sect::task}
+\indent • Выбрать простейшую предметную область, соответствующую 4-5 сущностям. \newline
+\indent • Сформировать требования к предметной области. \newline
+\indent • Создать модель «сущность-связь» для предметной области с обоснованием выбора кардинальных чисел связей.
+\section{Практическая реализация}
+В качестве предметной области была выбрана сфера бухгалтерского учёта в разделе кадров в некоторой фирме. Данная схема (рис. 1) удовлетворяет следующим функциональным требованиям:
+\begin{itemize}
+    \item Учёт сотрудников, когда-либо работавших в данной компании.
+    \item Формирование финансовых отчётов по указанному периоду и отделу c учётом отпускных, больничных и премий.
+    \item Учёт отделов с поддержкой иерархии.
+\end{itemize}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.9\textwidth]{Снимок экрана 2026-09-14 115630.png}
+    \caption{ER-схема базы данных}
+    \label{fig:er}
+\end{figure}
+\newpage
+\noindent В данной ER-схеме используются следующие сущности:
+\begin{description}
+    \item[1. Сотрудник] хранит основную информацию о человеке, работавшем в фирме.\newline
+    Атрибуты сущности:
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item ИНН - ID
+        \item СНИЛС
+        \item Фамилия, имя, отчество
+        \item Дата рождения
+        \item Серия и номер паспорта
+        \item Телефон
+        \item Почта
+    \end{itemize}
+    
+    \item[2. Договор] содержит всю необходимую информацию о трудовом договоре.\newline
+    Атрибуты сущности:
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item Номер договора - ID
+        \item ИНН
+        \item Оклад
+        \item Часы работы
+        \item Дата подписания
+        \item Дата начала работы
+        \item Дата увольнения
+        \item Причина увольнения
+    \end{itemize}
+    
+    \item[3. Отдел] хранит общие данные о подразделении и отображает их структуру.\newline
+    Атрибуты сущности:
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item Название отдела - ID
+        \item Бюджет
+        \item Численность (штат)
+    \end{itemize}
+    
+    \item[4. Должность] отображает основную информацию о должности в компании.\newline
+    Атрибуты сущности:
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item Название должности - ID
+        \item Минимальный оклад
+        \item Максимальный оклад
+        \item Норма часов в неделю
+    \end{itemize}
+    
+    \item[5. Отпуск] показывает необходимую информацию об отпусках сотрудников.\newline
+    Атрибуты сущности: 
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item Номер приказа - ID
+        \item ИНН - ID
+        \item Дата начала
+        \item Дата окончания
+        \item Сумма отпускных
+    \end{itemize}
+    
+    \item[6. Больничный] фиксирует данные больничного сотрудника. \newline
+    Атрибуты сущности:
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item Номер листа - ID
+        \item ИНН
+        \item Дата начала
+        \item Дата окончания
+        \item Сумма выплат
+    \end{itemize}
+
+    \item[7. Премия] хранит информацию о различных премиях, выданных компанией.\newline
+    Атрибуты сущности:
+    \vspace{-0.5em}
+    \begin{itemize}
+        \item Номер приказа - ID
+        \item ИНН - ID
+        \item Тип премии
+        \item Сумма
+        \item Дата выдачи
+    \end{itemize}
+\end{description}
+\newpage
+\indent Между указанными сущностями используются следующие связи:
+\begin{enumerate}
+    \item Сотрудник и договор связаны отношением один ко многим (максимальные кардинальные числа - 1 и M, минимальные кардинальные числа - 1 и 1): у сотрудника может быть несколько договоров (несколько должностей в одно время или в течение опредлённого времени), а у договоров только один сотрудник.
+    \vspace{-0.25em}
+    \item Сотрудник и отпуск связаны отношением один ко многим (максимальные кардинальные числа - M и 1, минимальные кардинальные числа - 0 и 1): у сотрудника может быть ноль или несколько отпусков за время работы, но каждый отпуск принадлежит только одному сотруднику.
+    \vspace{-0.25em}
+    \item Сотрудник и больничный связаны отношением один ко многим (максимальные кардинальные числа - M и 1, минимальные кардинальные числа - 0 и 1): у сотрудника может быть ноль или несколько больничных, но каждый больничный оформлен на одного сотрудника.
+    \vspace{-0.25em}
+    \item Сотрудник и премия связаны отношением один ко многим (максимальные кардинальные числа - M и 1, минимальные кардинальные число - 0 и 1): у сотрудника может быть ноль или несколько премий, но каждая премия выдана только одному сотруднику.
+    \vspace{-0.25em}
+    \item Договор и отдел связаны отношением многие к одному (максимальные кардинальные числа - 1 и М, минимальные кардинальные числа - 1 и 0): каждый договор заключается в одном отделе, но в одном отделе может быть заключено ноль (отдел новый) или несколько договоров.
+    \item Договор и должность связаны отношением многие к одному (максимальные кардинальные числа - 1 и M, минимальные кардинальные числа - 1 и 0): каждый договор соответствует одной должности, но на одну должность может быть принято ноль (новая должность) или несколько сотрудников.
+    \vspace{-0.25em}
+    \item Отдел связан с самим собой рекурсивной связью многие к одному (максимальные кардинальные числа - M и 1, минимальные кардинальные числа - 0 и 0): у каждого отдела может быть один вышестоящий отдел или не быть вовсе, но один вышестоящий отдел может включать несколько подчинённых или не иметь одного.
+\end{enumerate}
+\end{document}
