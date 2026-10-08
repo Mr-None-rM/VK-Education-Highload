@@ -367,9 +367,9 @@ Figma использует инфраструктуру Amazon Web Services (AWS
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': {
   'primaryColor': '#ffffff',
-  'primaryTextColor': '#002255',
-  'primaryBorderColor': '#5f92cc',
-  'tertiaryColor': '#5f92cc'
+  'primaryTextColor': '#000000',
+  'primaryBorderColor': '#1e1e1f',
+  'lineColor': '#99adb8',
 }}}%%
 erDiagram
     users ||--o{ sessions : ""
