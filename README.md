@@ -367,37 +367,27 @@ Figma использует инфраструктуру Amazon Web Services (AWS
 ```mermaid
 %%{init: {'theme':'base', 'themeVariables': {
   'primaryColor': '#ffffff',
-  'primaryTextColor': '#000000',
-  'primaryBorderColor': '#1e1e1f',
-  'lineColor': '#99adb8',
-  'tertiaryColor': '#ffffff'
+  'primaryTextColor': '#002255',
+  'primaryBorderColor': '#5f92cc',
+  'tertiaryColor': '#5f92cc'
 }}}%%
 erDiagram
-    direction TB
+    users ||--o{ sessions : ""
+    users ||--o{ files : ""
+    users ||--o{ file_permissions : ""
+    users ||--o{ journal_entries : ""
+    users ||--o{ comments : ""
+    users ||--o{ assets : ""
+    users ||--o{ export_jobs : ""
 
-    users ||--o{ sessions : "имеет"
-    users ||--o{ files : "владеет"
-    users ||--o{ file_permissions : "имеет доступ"
-    users ||--o{ journal_entries : "автор"
-    users ||--o{ comments : "автор"
-    users ||--o{ assets : "загрузил"
-    users ||--o{ fonts : "загрузил"
-    users ||--o{ libraries : "владеет"
-    users ||--o{ export_jobs : "запросил"
+    files ||--o{ file_permissions : ""
+    files ||--o{ journal_entries : ""
+    files ||--o{ comments : ""
+    files ||--o{ export_jobs : ""
+    files ||--|| multiplayer_ownership : ""
+    files }o--o{ fonts : ""
 
-    files ||--o{ file_permissions : "имеет"
-    files ||--o{ checkpoints : "имеет"
-    files ||--o{ journal_entries : "содержит"
-    files ||--o{ comments : "содержит"
-    files ||--o{ export_jobs : "имеет"
-    files ||--|| multiplayer_ownership : "владеется"
-    files ||--o| libraries : "является"
-
-    libraries ||--o{ library_components : "содержит"
-
-    checkpoints ||--o{ journal_entries : "предшествует"
-
-    comments ||--o{ comments : "тред"
+    comments ||--o{ comments : ""
 
     users {
         uuid user_id PK
@@ -428,7 +418,8 @@ erDiagram
         string name
         timestamp created_at
         timestamp updated_at
-        bigint last_checkpoint_version
+        timestamp checkpoint_updated_at
+        json document_state
         bigint size_bytes
         string access_level
         boolean is_library
@@ -443,42 +434,14 @@ erDiagram
         uuid granted_by FK
     }
 
-    checkpoints {
-        uuid file_id PK
-        bigint version PK
-        timestamp created_at
-        json document_state
-        bigint size_bytes
-    }
-
     journal_entries {
         uuid file_id PK
         bigint sequence_number PK
-        bigint checkpoint_version FK
         string op_type
         json op_payload
         timestamp created_at
         uuid author_id FK
         string client_id
-    }
-
-    libraries {
-        uuid library_id PK
-        uuid file_id FK
-        uuid owner_id FK
-        string name
-        timestamp created_at
-        timestamp updated_at
-        boolean is_shared
-    }
-
-    library_components {
-        uuid component_id PK
-        uuid library_id FK
-        string name
-        string node_id
-        timestamp created_at
-        timestamp updated_at
     }
 
     assets {
@@ -494,7 +457,6 @@ erDiagram
 
     fonts {
         uuid font_id PK
-        uuid owner_id FK
         string family_name
         string weight
         string style
