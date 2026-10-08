@@ -364,6 +364,7 @@ Figma использует инфраструктуру Amazon Web Services (AWS
 
 ## 5. Логическая схема БД
 
+```mermaid
 %%{init: {'theme':'base', 'themeVariables': {
   'primaryColor': '#ffffff',
   'primaryTextColor': '#000000',
@@ -537,6 +538,7 @@ erDiagram
         timestamp completed_at
         string error_message
     }
+```
 
 > Потом схему переделаю в Figma
 
